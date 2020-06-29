@@ -25,8 +25,8 @@ jobs:
         python3-stdeb
         dh-python
         python3-setuptools
-        flask
-        sqlalchemy
+        python3-flask
+        python3-sqlalchemy
 
     - name: Build
       run: python3 setup.py --command-packages=stdeb.command bdist_deb
