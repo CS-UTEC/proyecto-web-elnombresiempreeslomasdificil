@@ -1,0 +1,50 @@
+# https://github.com/marketplace/actions/upload-a-release-asset
+name: Release
+on:
+  push:
+    tags:
+    - '*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Wait Ubuntu build
+      uses: fountainhead/action-wait-for-check@v1.0.0
+      with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: "lint (ubuntu-20.04)"
+
+    - name: Download Ubuntu package
+      uses: dawidd6/action-download-artifact@v2
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        workflow: python.yml
+        name: Ubuntu-20.04-deb-package
+        commit: ${{ github.sha }}
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: ${{ github.ref }}
+        draft: false
+        prerelease: false
+
+    - name: Get deb name
+      id: ubuntu
+      run: echo ::set-output name=ubuntu::$(ls *.deb)
+
+    - name: Upload Ubuntu package
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./${{ steps.ubuntu.outputs.ubuntu }}
+        asset_name: ${{ steps.ubuntu.outputs.ubuntu }}
+        asset_content_type: application/vnd.debian.binary-package
