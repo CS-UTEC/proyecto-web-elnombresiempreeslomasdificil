@@ -7,6 +7,33 @@ on:
     branches: [ '*' ]
 
 jobs:
+  lint:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: ['ubuntu-20.04']
+
+      fail-fast: true
+      max-parallel: 3
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Dependencies
+      run: sudo apt install
+        python3-setuptools
+        python3-flask
+        python3-sqlalchemy
+
+    - uses: TrueBrain/actions-flake8@master
+      with:
+        ignore: E
+
+    - uses: TrueBrain/actions-flake8@master
+      with:
+        ignore: F,W,C90
+        only_warn: 1
+
   deb:
     runs-on: ${{ matrix.os }}
     strategy:

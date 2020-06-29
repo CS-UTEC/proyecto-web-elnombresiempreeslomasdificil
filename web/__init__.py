@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 
+# Test linter
+import time
+
 def main():
     print("Hello world")
 
