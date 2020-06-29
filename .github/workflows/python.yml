@@ -27,12 +27,12 @@ jobs:
 
     - uses: TrueBrain/actions-flake8@master
       with:
-        ignore: E
+        ignore: F,W,C90
+        only_warn: 1
 
     - uses: TrueBrain/actions-flake8@master
       with:
-        ignore: F,W,C90
-        only_warn: 1
+        ignore: E
 
   deb:
     runs-on: ${{ matrix.os }}
