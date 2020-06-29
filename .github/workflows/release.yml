@@ -14,7 +14,7 @@ jobs:
       uses: fountainhead/action-wait-for-check@v1.0.0
       with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: "lint (ubuntu-20.04)"
+          checkName: "deb (ubuntu-20.04)"
 
     - name: Download Ubuntu package
       uses: dawidd6/action-download-artifact@v2
