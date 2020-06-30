@@ -107,10 +107,10 @@ jobs:
       run: sed -i 's/tar\.xz/tar.zst/' /etc/makepkg.conf
 
     - name: chown
-      run: chown --recursive aur pkg/arch
+      run: chown --recursive aur pkg
 
     - name: makepkg
-      working-directory: ./pkg/arch
+      working-directory: ./pkg
       run: |
           export MAKEFLAGS=-j$(nproc)
           sudo -Eu aur makepkg -s --noconfirm
