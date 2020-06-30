@@ -68,3 +68,54 @@ jobs:
       with:
         name: ${{ steps.os_version.outputs.version }}-deb-package
         path: deb_dist/*.deb
+
+  arch-linux:
+    runs-on: ubuntu-latest
+    container: oblique/archlinux-yay
+
+    steps:
+    - name: Syu
+      run: sudo -u aur yay -Syu --noconfirm jq
+
+    - name: Get last tag
+      id: tag
+      env:
+        url: https://api.github.com/repos/${{ github.repository }}/tags
+      run: |
+          set -o pipefail
+          echo ::set-output name=tag::$(curl \
+              --silent \
+              --header 'authorization: Bearer ${{ github.token }}' \
+              --url $url | \
+              jq --raw-output '.[].name' | \
+              head --lines=1 \
+          )
+
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ steps.tag.outputs.tag }}
+
+    - name: Checkout repo head
+      env:
+        REF: ${{ github.ref }}
+      run: |
+          git fetch origin ${REF#refs/heads/}
+          git checkout FETCH_HEAD
+          git log --decorate=on
+
+    - name: Zstd
+      run: sed -i 's/tar\.xz/tar.zst/' /etc/makepkg.conf
+
+    - name: chown
+      run: chown --recursive aur pkg/arch
+
+    - name: makepkg
+      working-directory: ./pkg/arch
+      run: |
+          export MAKEFLAGS=-j$(nproc)
+          sudo -Eu aur makepkg -s --noconfirm
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: arch_package
+        path: pkg/*.pkg.tar.*
