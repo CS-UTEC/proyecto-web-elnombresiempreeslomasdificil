@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from flask import Flask,render_template, request, session, Response, redirect
+from flask import Flask, render_template, request, session, Response, redirect
 
 import json
 import time
