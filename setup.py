@@ -23,7 +23,7 @@ setuptools.setup(
     ],
     entry_points={
         "console_scripts": [
-            "web = web.__init__:main",
+            "web = web.web:main",
         ],
     },
     package_data={
