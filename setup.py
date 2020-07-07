@@ -27,7 +27,7 @@ setuptools.setup(
         ],
     },
     package_data={
-        "": ["static/*/*"]
+        "": ["static/*/*", "templates/*/*"]
     },
     python_requires='>=3.3',
 )
