@@ -1,7 +1,12 @@
 from sqlalchemy import Column, Integer, String, Sequence, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
-from database import connector
 import datetime
+
+if __package__ == 'model':
+    from database import connector
+else:
+    from ..database import connector
+
 
 """
 class User(connector.Manager.Base):
