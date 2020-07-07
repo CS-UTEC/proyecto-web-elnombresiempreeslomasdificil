@@ -11,7 +11,7 @@ setuptools.setup(
     description="Web",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/CS-UTEC/proyecto-web-elnombresiempreeslomasdificil",
+    url="https://github.com/CS-UTEC/proyecto-web-elnombresiempreeslomasdificil",  # noqa
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
