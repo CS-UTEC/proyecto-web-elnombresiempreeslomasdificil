@@ -30,4 +30,3 @@ class Recipe(connector.Manager.Base):
 #    Ingredients = Column({})
     #       "step":time
 #    Steps = Column({})
-
