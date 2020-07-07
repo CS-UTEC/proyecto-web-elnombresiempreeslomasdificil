@@ -1,0 +1,26 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.NavBar{
+    position: sticky;
+    background-color:#eee;
+    height: 69px;
+}
+
+.NavBar li{
+    list-style:none;
+    display: inline-block;
+    height:100%;
+}
+
+.logo-text{
+    padding-left:20px;
+    height:100%;
+}
+.search{
+    float:right;
+    margin-right:20px;
+    height:100%;
+}
