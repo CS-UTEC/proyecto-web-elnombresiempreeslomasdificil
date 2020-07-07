@@ -2,16 +2,16 @@
 
 from flask import Flask,render_template, request, session, Response, redirect
 
+import json
+import time
+import threading
+
 if __package__ is None or __package__ == '':
     from database import connector
     from model import entities
 else:
     from .database import connector
     from .model import entities
-
-import json
-import time
-import threading
 
 db = connector.Manager()
 engine = db.createEngine()
@@ -32,6 +32,7 @@ def getIndex():
 def main():
     app.secret_key = ".."
     app.run(port=8080, threaded=True, host=('127.0.0.1'))
+
 
 if __name__ == '__main__':
     main()

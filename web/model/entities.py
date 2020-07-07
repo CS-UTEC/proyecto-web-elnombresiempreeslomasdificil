@@ -27,6 +27,8 @@ class Message(connector.Manager.Base):
     user_from = relationship(User, foreign_keys=[user_from_id])
     user_to = relationship(User, foreign_keys=[user_to_id])
 """
+
+
 class Recipe(connector.Manager.Base):
     __tablename__ = 'recipe'
     id = Column(Integer, Sequence('recipe_id_seq'), primary_key=True)
