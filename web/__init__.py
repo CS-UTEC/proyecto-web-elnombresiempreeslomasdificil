@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
 
 from flask import Flask,render_template, request, session, Response, redirect
-from database import connector
-from model import entities
+
+if __package__ is None or __package__ == '':
+    from database import connector
+    from model import entities
+else:
+    from .database import connector
+    from .model import entities
+
 import json
 import time
 import threading
