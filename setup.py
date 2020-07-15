@@ -20,6 +20,7 @@ setuptools.setup(
     install_requires=[
         "Flask",
         "SQLAlchemy",
+        "markdown",
     ],
     entry_points={
         "console_scripts": [
