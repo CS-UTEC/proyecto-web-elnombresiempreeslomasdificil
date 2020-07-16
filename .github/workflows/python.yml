@@ -24,6 +24,8 @@ jobs:
         python3-setuptools
         python3-flask
         python3-sqlalchemy
+        python3-markdown
+        python3-pyxdg
 
     - uses: TrueBrain/actions-flake8@master
       with:
