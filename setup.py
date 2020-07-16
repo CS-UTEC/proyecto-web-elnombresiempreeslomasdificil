@@ -21,6 +21,7 @@ setuptools.setup(
         "Flask",
         "SQLAlchemy",
         "markdown",
+        "pyxdg",
     ],
     entry_points={
         "console_scripts": [
