@@ -32,7 +32,7 @@ def static_content(content):
 
 
 def main():
-    print(BaseDirectory.xdg_data_home)
+    print(path.join(BaseDirectory.xdg_data_home, "web"))
     app.secret_key = ".."
     app.run(port=8080, threaded=True, host=('127.0.0.1'))
 
