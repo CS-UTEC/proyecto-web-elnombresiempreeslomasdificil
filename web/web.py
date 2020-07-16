@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 from flask import Flask, render_template, request, session, Response, redirect
+from xdg import BaseDirectory
+from os import path
 
 import json
 import time
@@ -30,6 +32,7 @@ def static_content(content):
 
 
 def main():
+    print(path.join(BaseDirectory.xdg_data_home, __name__))
     app.secret_key = ".."
     app.run(port=8080, threaded=True, host=('127.0.0.1'))
 
