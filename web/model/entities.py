@@ -8,15 +8,14 @@ else:
     from ..database import connector
 
 
-"""
 class User(connector.Manager.Base):
     __tablename__ = 'users'
     id = Column(Integer, Sequence('user_id_seq'), primary_key=True)
-    name = Column(String(50))
-    fullname = Column(String(50))
-    password = Column(String(12))
     username = Column(String(12))
+    password = Column(String(12))
 
+
+"""
 class Message(connector.Manager.Base):
     __tablename__ = 'messages'
     id = Column(Integer, Sequence('message_id_seq'), primary_key=True)
@@ -37,3 +36,12 @@ class Recipe(connector.Manager.Base):
 #    Ingredients = Column({})
     #       "step":time
 #    Steps = Column({})
+
+
+class Recipe2(connector.Manager.Base):
+    __tablename__ = 'recipe2'
+    id = Column(Integer, Sequence('recipe2_id_seq'), primary_key=True)
+    user_id = Column(Integer, ForeignKey('users.id'))
+
+    md_file = Column(String(255))
+    json_file = Column(String(255))
