@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname=web-git
-pkgver=0.1.1.r8.g47c0a09
+pkgver=0.1.1.r10.g21df07c
 pkgrel=1
 pkgdesc="Web"
 arch=('any')
