@@ -21,10 +21,10 @@ jobs:
 
     - name: Dependencies
       run: sudo apt install
-        python3-setuptools
         python3-flask
-        python3-sqlalchemy
         python3-markdown
+        python3-setuptools
+        python3-sqlalchemy
         python3-xdg
 
     - uses: TrueBrain/actions-flake8@master
@@ -50,12 +50,14 @@ jobs:
 
     - name: Dependencies
       run: sudo apt install
-        python3-all
-        python3-stdeb
         dh-python
-        python3-setuptools
+        python3-all
         python3-flask
+        python3-markdown
+        python3-setuptools
         python3-sqlalchemy
+        python3-stdeb
+        python3-xdg
 
     - name: Build
       run: python3 setup.py --command-packages=stdeb.command bdist_deb
