@@ -2,6 +2,8 @@
 
 from markdown import markdown
 from flask import Flask, render_template, request, Response, session
+from os import path
+from pathlib import Path
 
 import json
 
@@ -109,6 +111,46 @@ def delete_user():
 def markdown_test():
     print("markdown")
     return markdown('# Hello world')
+
+
+@app.route('/recipes2', methods=['POST'])
+def create_recipe2():
+    if(not request.is_json):
+        c = json.loads(request.form['values'])
+    else:
+        c = json.loads(request.data)
+
+    recipe = entities.Recipe2(
+        user_id=c['user_id'],
+        md_file='.md',
+        json_file='.json'
+    )
+
+    _session = db.getSession(engine)
+    _session.add(recipe)
+    _session.commit()
+
+    recipe.md_file = str(recipe.id) + recipe.md_file
+    recipe.json_file = str(recipe.id) + recipe.json_file
+
+    Path(entities.recipe_data_dir).mkdir(parents=True, exist_ok=True)
+
+    markdown_path = path.join(entities.recipe_data_dir, recipe.md_file)
+    json_path = path.join(entities.recipe_data_dir, recipe.json_file)
+
+    markdown_file = open(markdown_path, 'w')
+    json_file = open(json_path, 'w')
+
+    markdown_file.write(c['markdown'])
+    json_file.write(json.dumps({'tags': c['tags']}))
+
+    markdown_file.close()
+    json_file.close()
+
+    _session.close()
+
+    r_msg = {'msg': 'Recipe created'}
+    return Response(json.dumps(r_msg), status=201)
 
 
 @app.route('/recipes2', methods=['GET'])
