@@ -2,8 +2,6 @@
 
 from markdown import markdown
 from flask import Flask, render_template, request, Response, session
-from xdg import BaseDirectory
-from os import path
 
 import json
 
@@ -32,7 +30,6 @@ def static_content(content):
 
 @app.route('/users', methods=['POST'])
 def create_user():
-    # c = json.loads(request.data)
     if(not request.is_json):
         c = json.loads(request.form['values'])
     else:
@@ -114,8 +111,18 @@ def markdown_test():
     return markdown('# Hello world')
 
 
+@app.route('/recipes2', methods=['GET'])
+def get_recipes2():
+    db_session = db.getSession(engine)
+
+    recipes = db_session.query(entities.Recipe2)
+    db_session.close()
+    response = json.dumps([x.to_json_dict() for x in recipes[:]])
+
+    return Response(response, mimetype='application/json')
+
+
 def main():
-    print(path.join(BaseDirectory.xdg_data_home, "web"))
     app.secret_key = ".."
     app.run(port=8080, threaded=True, host=('127.0.0.1'))
 
