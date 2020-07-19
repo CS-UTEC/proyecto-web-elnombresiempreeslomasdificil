@@ -41,6 +41,9 @@ class Recipe(connector.Manager.Base):
 #    Steps = Column({})
 
 
+recipe_data_dir = path.join(BaseDirectory.xdg_data_home, "web")
+
+
 class Recipe2(connector.Manager.Base):
     __tablename__ = 'recipe2'
     id = Column(Integer, Sequence('recipe2_id_seq'), primary_key=True)
@@ -50,13 +53,19 @@ class Recipe2(connector.Manager.Base):
     json_file = Column(String(255))
 
     def to_json_dict(self):
-        data_dir = path.join(BaseDirectory.xdg_data_home, "web")
 
-        tags = json.loads(path.join(data_dir, self.json_file).read())
+        tag_file = open(path.join(recipe_data_dir, self.json_file))
+        markdown_file = open(path.join(recipe_data_dir, self.md_file))
+
+        tags = json.loads(tag_file.read())
+        markdown = markdown_file.read()
+
+        tag_file.close()
+        markdown_file.close()
 
         return {
             'id': self.id,
             'user_id': self.user_id,
-            'markdown': open(path.join(data_dir, self.md_file)).read(),
+            'markdown': markdown,
             'tags': tags['tags']
         }
