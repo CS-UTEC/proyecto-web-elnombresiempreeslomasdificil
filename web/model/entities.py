@@ -1,6 +1,9 @@
 from sqlalchemy import Column, Integer, String, Sequence, DateTime, ForeignKey
 from sqlalchemy.orm import relationship
-import datetime
+from xdg import BaseDirectory
+from os import path
+
+import json
 
 if __package__ == 'model':
     from database import connector
@@ -45,3 +48,15 @@ class Recipe2(connector.Manager.Base):
 
     md_file = Column(String(255))
     json_file = Column(String(255))
+
+    def to_json_dict(self):
+        data_dir = path.join(BaseDirectory.xdg_data_home, "web")
+
+        tags = json.loads(path.join(data_dir, self.json_file).read())
+
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'markdown': open(path.join(data_dir, self.md_file)).read(),
+            'tags': tags['tags']
+        }
