@@ -155,7 +155,7 @@ def create_recipe2():
 
 @app.route('/recipes2', methods=['GET'])
 def get_recipes2():
-    user = request.args.get('user')
+    user = int(request.args.get('user'))
 
     db_session = db.getSession(engine)
 
