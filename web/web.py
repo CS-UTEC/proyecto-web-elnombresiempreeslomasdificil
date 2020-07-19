@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from markdown import markdown
 from flask import Flask, render_template, request, Response, session
 from xdg import BaseDirectory
 from os import path
@@ -105,6 +106,12 @@ def delete_user():
 
     message = {'message': 'Ok'}
     return Response(json.dumps(message), mimetype='application/json')
+
+
+@app.route('/markdown')
+def markdown_test():
+    print("markdown")
+    return markdown('# Hello world')
 
 
 def main():
