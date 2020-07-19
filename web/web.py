@@ -155,9 +155,15 @@ def create_recipe2():
 
 @app.route('/recipes2', methods=['GET'])
 def get_recipes2():
+    user = request.args.get('user')
+
     db_session = db.getSession(engine)
 
     recipes = db_session.query(entities.Recipe2)
+
+    if user is not None:
+        recipes = recipes.filter(entities.Recipe2.user_id == user)
+
     db_session.close()
     response = json.dumps([x.to_json_dict() for x in recipes[:]])
 
