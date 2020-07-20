@@ -19,6 +19,29 @@ engine = db.createEngine()
 app = Flask(__name__)
 
 
+@app.route('/authenticate', methods=['POST'])
+def authenticate() -> str:
+    body = json.loads(request.data)
+    username: str = body['username']
+    password: str = body['password']
+
+    db_session = db.getSession(engine)
+    users = db_session.query(entities.User).\
+        filter(entities.User.username == username)
+
+    db_session.close()
+    for i in users:
+        if (i.password == password):
+            # with app.app_context():
+            # user_id = i.id
+            session['id'] = i.id
+
+            response = {'msg': 'ok', 'id': i.id, 'username': username}
+            return Response(json.dumps(response), mimetype='application/json')
+
+    return Response('{"msg": "No"}', status=401, mimetype='application/json')
+
+
 @app.route('/', methods=['GET'])
 def getIndex():
     return render_template('index.html')
