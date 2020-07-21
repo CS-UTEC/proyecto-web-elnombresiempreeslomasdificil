@@ -34,11 +34,20 @@ class Message(connector.Manager.Base):
 class Recipe(connector.Manager.Base):
     __tablename__ = 'recipe'
     id = Column(Integer, Sequence('recipe_id_seq'), primary_key=True)
-    Description = Column(String(600))
+    user_id = Column(Integer, ForeignKey('users.id'))
+    description = Column(String(600))
+
     #           "ingredient":quantity
 #    Ingredients = Column({})
     #       "step":time
 #    Steps = Column({})
+
+    def to_json_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'description': self.description
+        }
 
 
 recipe_data_dir = path.join(BaseDirectory.xdg_data_home, "web")
