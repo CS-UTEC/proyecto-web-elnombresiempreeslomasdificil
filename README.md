@@ -14,4 +14,6 @@ makepkg -si
 
 ```bash
 pip3 install --user Flask SQLAlchemy markdown pyxdg
+
+./web/web.py
 ```
