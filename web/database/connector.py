@@ -2,6 +2,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import DeclarativeMeta
+from xdg.BaseDirectory import xdg_data_home
+from os.path import join
 import json
 
 
@@ -10,8 +12,12 @@ class Manager:
     session = None
 
     def createEngine(self):
-        engine = create_engine('sqlite:///iChef.db?check_same_thread=False',
-                               echo=False)
+        db_dir = join(xdg_data_home, "web")
+
+        db_path = 'sqlite:///' + db_dir + '/iChef.db?check_same_thread=False'
+        print(db_path)
+
+        engine = create_engine(db_path, echo=False)
         self.Base.metadata.create_all(engine)
         return engine
 
