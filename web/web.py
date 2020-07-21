@@ -156,8 +156,6 @@ def create_recipe2():
     recipe.md_file = str(recipe.id) + recipe.md_file
     recipe.json_file = str(recipe.id) + recipe.json_file
 
-    Path(entities.recipe_data_dir).mkdir(parents=True, exist_ok=True)
-
     markdown_path = path.join(entities.recipe_data_dir, recipe.md_file)
     json_path = path.join(entities.recipe_data_dir, recipe.json_file)
 
@@ -232,6 +230,8 @@ def get_recipes():
 
 
 def main():
+    Path(entities.recipe_data_dir).mkdir(parents=True, exist_ok=True)
+
     app.secret_key = ".."
     app.run(port=8080, threaded=True, host=('127.0.0.1'))
 
