@@ -4,6 +4,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import DeclarativeMeta
 from xdg.BaseDirectory import xdg_data_home
 from os.path import join
+from pathlib import Path
 import json
 
 
@@ -13,6 +14,7 @@ class Manager:
 
     def createEngine(self):
         db_dir = join(xdg_data_home, "web")
+        Path(db_dir).mkdir(parents=True, exist_ok=True)
 
         db_path = 'sqlite:///' + db_dir + '/iChef.db?check_same_thread=False'
         print(db_path)

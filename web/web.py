@@ -3,7 +3,6 @@
 from markdown import markdown
 from flask import Flask, render_template, request, Response, session
 from os import path
-from pathlib import Path
 
 import json
 
@@ -230,8 +229,6 @@ def get_recipes():
 
 
 def main():
-    Path(entities.recipe_data_dir).mkdir(parents=True, exist_ok=True)
-
     app.secret_key = ".."
     app.run(port=8080, threaded=True, host=('127.0.0.1'))
 
