@@ -46,6 +46,11 @@ def getIndex():
     return render_template('index.html')
 
 
+@app.route('/<page>', methods=['GET'])
+def getPages(page: str):
+    return render_template(page)
+
+
 @app.route('/static/<content>')
 def static_content(content):
     print(content)
