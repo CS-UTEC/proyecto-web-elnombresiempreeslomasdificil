@@ -53,7 +53,6 @@ def getPages(page: str):
 
 @app.route('/static/<content>')
 def static_content(content):
-    print(content)
     return render_template(content)
 
 
