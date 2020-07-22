@@ -1,8 +1,6 @@
 function search() {
 	var query = $("#search").val()
 
-	//console.log(query)
-
 	$.get({
 		url: '/recipes',
 		type: 'get',
@@ -10,7 +8,14 @@ function search() {
 		contentType: 'application/json',
 		success: function(data)
 		{
-			console.log(data)
+			var options = {
+				includeScore: true,
+				keys : ['title']
+			}
+
+			var fuse = new Fuse(data, options)
+
+			console.log(fuse.search(query))
 		},
 		error: function(data)
 		{
