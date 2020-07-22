@@ -1,8 +1,6 @@
 function search() {
 	var query = $("#search").val()
 
-	//console.log(query)
-
 	$.get({
 		url: '/recipes',
 		type: 'get',
