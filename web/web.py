@@ -46,9 +46,13 @@ def getIndex():
     return render_template('index.html')
 
 
+@app.route('/<page>', methods=['GET'])
+def getPages(page: str):
+    return render_template(page)
+
+
 @app.route('/static/<content>')
 def static_content(content):
-    print(content)
     return render_template(content)
 
 
@@ -199,6 +203,7 @@ def create_recipe():
 
     recipe = entities.Recipe(
         user_id=c['user_id'],
+        title=c['title'],
         description=c['description'],
     )
 

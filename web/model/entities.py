@@ -35,6 +35,7 @@ class Recipe(connector.Manager.Base):
     __tablename__ = 'recipe'
     id = Column(Integer, Sequence('recipe_id_seq'), primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id'))
+    title = Column(String(100))
     description = Column(String(600))
 
     #           "ingredient":quantity
@@ -46,6 +47,7 @@ class Recipe(connector.Manager.Base):
         return {
             'id': self.id,
             'user_id': self.user_id,
+            'title': self.title,
             'description': self.description
         }
 
