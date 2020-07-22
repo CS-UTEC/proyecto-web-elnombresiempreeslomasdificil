@@ -1,3 +1,8 @@
+function makeLink(title, id) {
+	// Link placeholder
+	return $("<a>", {href: "/", text: title})
+}
+
 function search() {
 	var query = $("#search").val()
 
@@ -8,6 +13,7 @@ function search() {
 		contentType: 'application/json',
 		success: function(data)
 		{
+			$("#recipes").empty()
 			var options = {
 				includeScore: true,
 				keys : ['title']
@@ -18,8 +24,15 @@ function search() {
 			var results = fuse.search(query)
 
 			for(i in results){
-				console.log(results[i].item.title)
-				console.log(results[i].item.id)
+				var item = results[i].item
+
+				var title = item.title
+				var id = item.id
+
+				console.log(title)
+				console.log(id)
+
+				$("#recipes").append(makeLink(title, id), "<br>")
 			}
 		},
 		error: function(data)
