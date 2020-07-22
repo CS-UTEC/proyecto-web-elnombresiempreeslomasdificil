@@ -3,7 +3,6 @@
 from markdown import markdown
 from flask import Flask, render_template, request, Response, session
 from os import path
-from pathlib import Path
 
 import json
 
@@ -156,8 +155,6 @@ def create_recipe2():
     recipe.md_file = str(recipe.id) + recipe.md_file
     recipe.json_file = str(recipe.id) + recipe.json_file
 
-    Path(entities.recipe_data_dir).mkdir(parents=True, exist_ok=True)
-
     markdown_path = path.join(entities.recipe_data_dir, recipe.md_file)
     json_path = path.join(entities.recipe_data_dir, recipe.json_file)
 
@@ -178,7 +175,7 @@ def create_recipe2():
 
 @app.route('/recipes2', methods=['GET'])
 def get_recipes2():
-    user = int(request.args.get('user'))
+    user = request.args.get('user')
 
     db_session = db.getSession(engine)
 
@@ -186,6 +183,44 @@ def get_recipes2():
 
     if user is not None:
         recipes = recipes.filter(entities.Recipe2.user_id == user)
+
+    db_session.close()
+    response = json.dumps([x.to_json_dict() for x in recipes[:]])
+
+    return Response(response, mimetype='application/json')
+
+
+@app.route('/recipes', methods=['POST'])
+def create_recipe():
+    if(not request.is_json):
+        c = json.loads(request.form['values'])
+    else:
+        c = json.loads(request.data)
+
+    recipe = entities.Recipe(
+        user_id=c['user_id'],
+        description=c['description'],
+    )
+
+    _session = db.getSession(engine)
+    _session.add(recipe)
+    _session.commit()
+    _session.close()
+
+    r_msg = {'msg': 'Recipe created'}
+    return Response(json.dumps(r_msg), status=201)
+
+
+@app.route('/recipes', methods=['GET'])
+def get_recipes():
+    user = request.args.get('user')
+
+    db_session = db.getSession(engine)
+
+    recipes = db_session.query(entities.Recipe)
+
+    if user is not None:
+        recipes = recipes.filter(entities.Recipe.user_id == user)
 
     db_session.close()
     response = json.dumps([x.to_json_dict() for x in recipes[:]])
