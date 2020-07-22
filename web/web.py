@@ -203,6 +203,7 @@ def create_recipe():
 
     recipe = entities.Recipe(
         user_id=c['user_id'],
+        title=c['title'],
         description=c['description'],
     )
 
