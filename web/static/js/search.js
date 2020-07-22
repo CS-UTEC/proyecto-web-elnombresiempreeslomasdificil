@@ -1,6 +1,6 @@
 function makeLink(title, id) {
 	// Link placeholder
-	return $("<a>", {href: "/", text: title})
+	return $("<a>", {href: "/recipe_vire.html?id="+id, text: title})
 }
 
 function search() {
