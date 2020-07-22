@@ -15,7 +15,12 @@ function search() {
 
 			var fuse = new Fuse(data, options)
 
-			console.log(fuse.search(query))
+			var results = fuse.search(query)
+
+			for(i in results){
+				console.log(results[i].item.title)
+				console.log(results[i].item.id)
+			}
 		},
 		error: function(data)
 		{
