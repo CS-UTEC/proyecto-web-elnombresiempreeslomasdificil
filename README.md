@@ -13,7 +13,7 @@ makepkg -si
 # Pip
 
 ```bash
-pip3 install --user Flask SQLAlchemy markdown pyxdg
+pip3 install --user -r requirements.txt
 
 ./web/web.py
 ```
