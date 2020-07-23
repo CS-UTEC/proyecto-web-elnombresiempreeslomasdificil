@@ -19,7 +19,6 @@ function create_recipe(){
 
 
 	var credentials = {
-		'user_id': 1,
 		'title': name,
 		'markdown': pass,
 		'tags': pass,

@@ -147,7 +147,7 @@ def create_recipe2():
         c = json.loads(request.data)
 
     recipe = entities.Recipe2(
-        user_id=c['user_id'],
+        user_id=c['user_id'] if 'user_id' in c else session['id'],
         title=c['title'],
         md_file='.md',
         json_file='.json'
