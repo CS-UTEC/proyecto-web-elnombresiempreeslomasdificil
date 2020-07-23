@@ -3,13 +3,12 @@
     <title>Create Recipe</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-	<script src="/static/libs/jquery-3.3.1.js" charset="utf-8">
-	</script>
-	<script src="/static/js/view.js" charset="utf-8">
-    </script>
     <script src = "/static/js/create_recipe.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+	<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 </head>
 <body>
     <table>
@@ -36,4 +35,9 @@
 			<button onclick = "create_recipe()" type = "button" class = "btn btn-primary">Sent</button></td>
 		</tr>
 		</table>
+
+		<textarea name="Text" id="markdown"></textarea>
+		<script charset="utf-8">
+			edit_area()
+		</script>
 </body>
