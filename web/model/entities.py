@@ -4,6 +4,7 @@ from xdg import BaseDirectory
 from os import path
 
 import json
+import markdown
 
 if __package__ == 'model':
     from database import connector
@@ -59,6 +60,7 @@ class Recipe2(connector.Manager.Base):
     __tablename__ = 'recipe2'
     id = Column(Integer, Sequence('recipe2_id_seq'), primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id'))
+    title = Column(String(100))
 
     md_file = Column(String(255))
     json_file = Column(String(255))
@@ -69,7 +71,7 @@ class Recipe2(connector.Manager.Base):
         markdown_file = open(path.join(recipe_data_dir, self.md_file))
 
         tags = json.loads(tag_file.read())
-        markdown = markdown_file.read()
+        markdown_str = markdown_file.read()
 
         tag_file.close()
         markdown_file.close()
@@ -77,6 +79,7 @@ class Recipe2(connector.Manager.Base):
         return {
             'id': self.id,
             'user_id': self.user_id,
-            'markdown': markdown,
+            'title': self.title,
+            'markdown': markdown.markdown(markdown_str),
             'tags': tags['tags']
         }

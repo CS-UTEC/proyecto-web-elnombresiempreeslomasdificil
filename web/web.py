@@ -148,6 +148,7 @@ def create_recipe2():
 
     recipe = entities.Recipe2(
         user_id=c['user_id'],
+        title=c['title'],
         md_file='.md',
         json_file='.json'
     )
@@ -158,6 +159,9 @@ def create_recipe2():
 
     recipe.md_file = str(recipe.id) + recipe.md_file
     recipe.json_file = str(recipe.id) + recipe.json_file
+
+    _session.add(recipe)
+    _session.commit()
 
     markdown_path = path.join(entities.recipe_data_dir, recipe.md_file)
     json_path = path.join(entities.recipe_data_dir, recipe.json_file)
@@ -190,6 +194,20 @@ def get_recipes2():
 
     db_session.close()
     response = json.dumps([x.to_json_dict() for x in recipes[:]])
+
+    return Response(response, mimetype='application/json')
+
+
+@app.route('/recipes2/<id>', methods=['GET'])
+def get_recipe2(id):
+    db_session = db.getSession(engine)
+
+    recipes = db_session.query(entities.Recipe2)
+
+    recipe = recipes.filter(entities.Recipe2.id == id).first()
+
+    db_session.close()
+    response = json.dumps(recipe.to_json_dict())
 
     return Response(response, mimetype='application/json')
 
