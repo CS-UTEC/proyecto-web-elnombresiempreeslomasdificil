@@ -1,13 +1,13 @@
 function makeLink(title, id) {
 	// Link placeholder
-	return $("<a>", {href: "/recipe_vire.html?id="+id, text: title})
+	return $("<a>", {href: "/recipe_view.html?id="+id, text: title})
 }
 
 function search() {
 	var query = $("#search").val()
 
 	$.get({
-		url: '/recipes',
+		url: '/recipes2',
 		type: 'get',
 		dataType: 'json',
 		contentType: 'application/json',
