@@ -10,6 +10,7 @@ function qStr(){
 		success: function(data)
 		{
 			$("#view").append(data.markdown_html)
+			$("#tags").val(data.tags.join())
 		},
 		error: function(data)
 		{
