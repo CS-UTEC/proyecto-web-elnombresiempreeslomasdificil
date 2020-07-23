@@ -160,6 +160,9 @@ def create_recipe2():
     recipe.md_file = str(recipe.id) + recipe.md_file
     recipe.json_file = str(recipe.id) + recipe.json_file
 
+    _session.add(recipe)
+    _session.commit()
+
     markdown_path = path.join(entities.recipe_data_dir, recipe.md_file)
     json_path = path.join(entities.recipe_data_dir, recipe.json_file)
 
@@ -207,8 +210,6 @@ def get_recipe2(id):
     response = json.dumps(recipe.to_json_dict())
 
     return Response(response, mimetype='application/json')
-
-
 
 
 @app.route('/recipes', methods=['POST'])
