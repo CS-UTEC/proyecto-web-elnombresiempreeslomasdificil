@@ -3,8 +3,13 @@
     <title>Create Recipe</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
-    <script src="/static/libs/jquery-3.3.1.js" charset="utf-8"> </script>
+	<script src="/static/libs/jquery-3.3.1.js" charset="utf-8">
+	</script>
+	<script src="/static/js/view.js" charset="utf-8">
+    </script>
+    <script src = "/static/js/create_recipe.js"></script> 
+
+    
 </head>
 <body>
     <table>
@@ -20,15 +25,15 @@
 
         <tr>
             <td> Ingredients (separated by a comma)</td>
-            <td><input type="text" value="" data-role="tagsinput" ></td>
+            <td><input type="text" value="" data-role="tagsinput" id = "Ingredients"></td>
         </tr>        
         <tr>
             <td> Instructions (separated by a comma)</td>
-            <td><input type="text" value="" data-role="tagsinput" ></td>
+            <td><input type="text" value="" data-role="tagsinput" id = "Instructions"></td>
         </tr>
 		<tr>
 			<td colspan = "2"> 
-			<button onclick = "login()" type = "button" class = "btn btn-primary">Sent</button></td>
+			<button onclick = "create_recipe()" type = "button" class = "btn btn-primary">Sent</button></td>
 		</tr>
 		</table>
 </body>
