@@ -1,14 +1,29 @@
 function create_user(){
 	console.log("created user")
-	var user = $('username').val();
-	var pass = $('password').val();
+	var user = $('#username').val();
+	var pass = $('#password').val();
 
 
-	$.post("/users" + {
-		username: user,
-		password: pass,
-	},
-	function(data, status){
-		    alert("Data: " + data + "\nStatus: " + status);
+	var credentials = {
+		'username': user,
+		'password': pass
+	};
+
+	var json = JSON.stringify(credentials)
+
+	$.post({
+		url: '/users',
+		type: 'post',
+		dataType: 'json',
+		contentType: 'application/json',
+		data: json,
+		success: function(data)
+		{
+			console.log(data.msg)
+		},
+		error: function(data)
+		{
+			console.error("Error")
+		}
 	});
 }
