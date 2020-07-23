@@ -195,6 +195,22 @@ def get_recipes2():
     return Response(response, mimetype='application/json')
 
 
+@app.route('/recipes2/<id>', methods=['GET'])
+def get_recipe2(id):
+    db_session = db.getSession(engine)
+
+    recipes = db_session.query(entities.Recipe2)
+
+    recipe = recipes.filter(entities.Recipe2.id == id).first()
+
+    db_session.close()
+    response = json.dumps(recipe.to_json_dict())
+
+    return Response(response, mimetype='application/json')
+
+
+
+
 @app.route('/recipes', methods=['POST'])
 def create_recipe():
     if(not request.is_json):
