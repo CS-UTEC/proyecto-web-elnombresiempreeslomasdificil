@@ -1,23 +1,10 @@
 <!doctype html>
 <head>
     <title>Create Recipe</title>
-    <link href="../libs/jquery-3.3.1.js"/>
-    <link rel="stylesheet" href="../css/main.css"/>
-    <style> 
-        h1 { 
-            color:#009909;
-            font-size:30px; 
-        } 
-        p { 
-            font-size:17px; 
-            margin-top:-25px; 
-            margin-left:15px; 
-        }
-        img{
-            text-align: center;
-        }
-        
-        </style> 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+    <script src="/static/libs/jquery-3.3.1.js" charset="utf-8"> </script>
 </head>
 <body>
     <table>
@@ -29,11 +16,19 @@
 		<tr>
 			<td>Image of the recipe (URL)</td>
 			<td><input type = "text" name = "password" id= "password"></td>
-		</tr>
+        </tr>
 
+        <tr>
+            <td> Ingredients (separated by a comma)</td>
+            <td><input type="text" value="" data-role="tagsinput" ></td>
+        </tr>        
+        <tr>
+            <td> Instructions (separated by a comma)</td>
+            <td><input type="text" value="" data-role="tagsinput" ></td>
+        </tr>
 		<tr>
 			<td colspan = "2"> 
-			<button onclick = "login()" type = "button" class = "btn btn-primary">Login</button></td>
+			<button onclick = "login()" type = "button" class = "btn btn-primary">Sent</button></td>
 		</tr>
 		</table>
 </body>
