@@ -9,7 +9,7 @@ function qStr(){
 		contentType: 'application/json',
 		success: function(data)
 		{
-			$("#view").append(data.markdown)
+			$("#view").append(data.markdown_html)
 		},
 		error: function(data)
 		{

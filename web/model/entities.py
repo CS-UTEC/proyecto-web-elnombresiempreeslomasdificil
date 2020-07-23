@@ -80,6 +80,7 @@ class Recipe2(connector.Manager.Base):
             'id': self.id,
             'user_id': self.user_id,
             'title': self.title,
-            'markdown': markdown.markdown(markdown_str),
+            'markdown': markdown_str,
+            'markdown_html': markdown.markdown(markdown_str),
             'tags': tags['tags']
         }
