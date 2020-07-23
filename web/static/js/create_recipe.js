@@ -1,8 +1,32 @@
 function create_recipe(){
     console.log("created recipe")
-    var user = $('#Ingredients').tagsinput()
+    var name = $('#name').val()
+    var url = $('#image').val()
+    var ing = $('#Ingredients').tagsinput('items')
+    var inst = $('#Instructions').tagsinput('items')
 
-    console.log(user)
+    
+    var tag = $('input');
+        elt.tagsinput({
+
+        insgredientes: {
+            source: ing
+        },
+        instrucciones: {
+            source: inst
+        }
+    });
+
+
+	var credentials = {
+		'user_id': 1,
+		'title': name,
+		'markdown': pass,
+		'tags': pass,
+    };
+
+
+
 
 }
 
