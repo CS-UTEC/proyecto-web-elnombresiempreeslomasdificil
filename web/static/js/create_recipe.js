@@ -1,14 +1,8 @@
 function create_recipe(){
-    console.log("created user")
-	var user = $('#username').val();
-	var pass = $('#password').val();
 
-
-	var credentials = {
-		'username': user,
-		'password': pass
-	};
-
-	var json = JSON.stringify(credentials)
+    console.log("created recipe")
+    var user = $('#Ingredients').tagsinput()
+    
+    console.log(user)
 
 }
