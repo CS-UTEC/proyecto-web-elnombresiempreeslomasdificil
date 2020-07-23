@@ -148,6 +148,7 @@ def create_recipe2():
 
     recipe = entities.Recipe2(
         user_id=c['user_id'],
+        title=c['title'],
         md_file='.md',
         json_file='.json'
     )
