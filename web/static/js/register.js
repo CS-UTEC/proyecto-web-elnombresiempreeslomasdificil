@@ -19,7 +19,8 @@ function create_user(){
 		data: json,
 		success: function(data)
 		{
-			console.log(data.msg)
+            console.log(data.msg)
+            window.location.href = "./login.html";
 		},
 		error: function(data)
 		{
