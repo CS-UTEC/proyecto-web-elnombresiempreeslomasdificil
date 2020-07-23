@@ -1,0 +1,42 @@
+<!DOCTYPE html> 
+<html>
+
+	<head>
+		<meta charset = "UTF-8">
+		<title>Register user</title>
+		<script src = "/static/js/Register.js"></script> 
+		<script src = "/static/js/libs/bootstrap.js"> </script>
+		<script src = "/libs/jquery-3.3.1.js"> </script>
+	<style> 
+	h1 { 
+		color:#009909;
+		font-size:30px; 
+	} 
+	img{
+		text-align: center;
+	}
+
+	</style> 
+	</head> 
+	<center>
+		<img src= "https://png.pngtree.com/element_our/png_detail/20180912/hat-chef--logo-and-symbols-vector-template-png_91617.jpg" width = "150" height = "150" ><br>
+	<body>
+		<table>
+		<tr>
+			<td>Username</td>
+			<td><input type = "text" name = "username" id= "username"></td>
+		</tr>
+
+		<tr>
+			<td>Password</td>
+			<td><input type = "password" name = "password" id= "password"></td>
+		</tr>
+
+		<tr>
+			<td colspan = "2"> 
+			<button onclick = "create_user()" type = "button" class = "btn btn-primary">Register</button></td>
+		</tr>
+		</table>
+	</body>
+
+</html>   
