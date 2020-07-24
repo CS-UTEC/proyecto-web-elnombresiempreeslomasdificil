@@ -246,7 +246,10 @@ def get_recipes():
         recipes = recipes.filter(entities.Recipe.user_id == user)
 
     db_session.close()
-    response = json.dumps([x.to_json_dict() for x in recipes[:]])
+    if recipes is None:
+        response = '[]'
+    else:
+        response = json.dumps([x.to_json_dict() for x in recipes[:]])
 
     return Response(response, mimetype='application/json')
 
