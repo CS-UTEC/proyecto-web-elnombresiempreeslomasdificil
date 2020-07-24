@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src = "/static/js/logout.js"></script> 
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js" charset="utf-8">
 		</script>
@@ -19,6 +20,9 @@
 		</style>
 	</head>
 	<body onload="qStr()">
+        <button onclick = "logout()" type = "button" class = "btn btn-danger">Logout</button>
+            <br></br>
+            <br></br>
 		<input type="text" id="tags" data-role="tagsinput"/>
 		<div id="view">
 
