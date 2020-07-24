@@ -264,8 +264,8 @@ def get_recipes():
 
 @app.route('/current', methods = ['GET'])
 def current():
-    user_json = session['user']
-    return Response(user_json, status = 200, mimetype = 'application/json')
+    user_json = {"id":session['id']}
+    return Response(json.dumps(user_json), status = 200, mimetype = 'application/json')
 
 
 
