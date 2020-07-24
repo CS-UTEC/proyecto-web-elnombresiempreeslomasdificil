@@ -1,30 +1,39 @@
+var simplemde
+
 function create_recipe(){
     console.log("created recipe")
     var name = $('#name').val()
-    var url = $('#image').val()
-    var ing = $('#Ingredients').tagsinput('items')
-    var inst = $('#Instructions').tagsinput('items')
-    
 
-    var tag = $('input');
-    
-    tag.tagsinput({
-        itemDescription: "description",
-        itemIngredients: "Ingredients",
-        itemInstructions : "Instructions"
-    });
+    var tag = $('#tags').tagsinput('items');
 
-    tag.tagsinput('add', { "description": name , "Ingredients": ing   , "Instructions": inst});
     console.log(tag)
 
-    var credential = {
+    var data = {
         "title": name,
-        "markdown": url,
+        "markdown": simplemde.value(),
         "tags":tag
     };
 
+    console.log(data)
+
+	$.post({
+		url: '/recipes2',
+		type: 'post',
+		dataType: 'json',
+		contentType: 'application/json',
+		data: JSON.stringify(data),
+		success: function(data)
+		{
+            console.log(data.msg)
+		},
+		error: function(data)
+		{
+			console.error("Error")
+		}
+	});
 }
 
 function edit_area() {
-	var simplemde = new SimpleMDE({ element: $("#markdown")[0] });
+	simplemde = new SimpleMDE({ element: $("#markdown")[0] });
+	simplemde.value("# Título\n## Ingredientes\n* \n* \n## Instrucciones")
 }

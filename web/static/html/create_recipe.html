@@ -19,26 +19,16 @@
 </head>
 
 <body>
-	<input type="text" id="tags" data-role="tagsinput"/>
     <table>
 		<tr>
+			<td>Tags</td>
+			<td><input type="text" id="tags" data-role="tagsinput"/></td>
+		</tr>
+		<tr>
 			<td>Recipe Name</td>
-			<td><input type = "text" name = "username" id= "name"></td>
+			<td><input type = "text" name = "name" id= "name"></td>
 		</tr>
 
-		<tr>
-			<td>Image of the recipe (URL)</td>
-			<td><input type = "text" name = "password" id= "image"></td>
-        </tr>
-
-        <tr>
-            <td> Ingredients (separated by a comma)</td>
-            <td><input type="text" value="" data-role="tagsinput" id = "Ingredients"></td>
-        </tr>        
-        <tr>
-            <td> Instructions (separated by a comma)</td>
-            <td><input type="text" value="" data-role="tagsinput" id = "Instructions"></td>
-        </tr>
 		<tr>
 			<td colspan = "2"> 
 			<button onclick = "create_recipe()" type = "button" class = "btn btn-primary">Sent</button></td>

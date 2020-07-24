@@ -16,7 +16,7 @@ function search() {
 			$("#recipes").empty()
 			var options = {
 				includeScore: true,
-				keys : ['title']
+				keys : ['tags']
 			}
 
 			var fuse = new Fuse(data, options)
