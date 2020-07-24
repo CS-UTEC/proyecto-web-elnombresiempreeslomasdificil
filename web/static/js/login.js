@@ -11,7 +11,7 @@ function login(){
 		dataType: 'json',
 		contentType: 'application/json',
 		success: function(data){
-			window.location.href = "./create_recipe.html";
+			window.location.href = "./search_by_id.html";
 			console.log("Authenticaded!");
 			alert("Authenticaded!!!");
 		},

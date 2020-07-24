@@ -71,7 +71,7 @@ def create_user():
     _session.add(user)
     _session.commit()
     _session.close()
-    r_msg = {'msg': 'UserCreated'}
+    r_msg = {'msg': 'UserCreated'}  
     return Response(json.dumps(r_msg), status=201)
 
 
@@ -249,6 +249,14 @@ def get_recipes():
     response = json.dumps([x.to_json_dict() for x in recipes[:]])
 
     return Response(response, mimetype='application/json')
+
+
+
+@app.route('/current', methods = ['GET'])
+def current():
+    user_json = session['user']
+    return Response(user_json, status = 200, mimetype = 'application/json')
+
 
 
 def main():
