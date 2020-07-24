@@ -35,5 +35,5 @@ function create_recipe(){
 
 function edit_area() {
 	simplemde = new SimpleMDE({ element: $("#markdown")[0] });
-	simplemde.value("# Título\n## Ingredientes\n* \n* \n## Instrucciones")
+	simplemde.value("# Título\n## Ingredientes\n* \n* \n## Instrucciones\n* \n*")
 }
