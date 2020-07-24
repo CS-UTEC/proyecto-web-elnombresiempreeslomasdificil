@@ -40,6 +40,13 @@ def authenticate() -> str:
 
     return Response('{"msg": "No"}', status=401, mimetype='application/json')
 
+@app.route('/f/logout', methods=['GET'])                        
+def logout():                                                 
+    if "id" in session:                           
+        session.pop("id")                         
+    response={"msg":"bye"}                              
+    json_response=json.dumps(response)                        
+    return Response(json_response, mimetype='aplication/json')
 
 @app.route('/', methods=['GET'])
 def getIndex():
@@ -246,7 +253,10 @@ def get_recipes():
         recipes = recipes.filter(entities.Recipe.user_id == user)
 
     db_session.close()
-    response = json.dumps([x.to_json_dict() for x in recipes[:]])
+    if recipes is None:
+        response = '[]'
+    else:
+        response = json.dumps([x.to_json_dict() for x in recipes[:]])
 
     return Response(response, mimetype='application/json')
 
