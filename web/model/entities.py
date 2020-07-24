@@ -29,6 +29,7 @@ class Message(connector.Manager.Base):
     user_to_id = Column(Integer, ForeignKey('users.id'))
     user_from = relationship(User, foreign_keys=[user_from_id])
     user_to = relationship(User, foreign_keys=[user_to_id])
+"""
 
 
 class Recipe(connector.Manager.Base):
@@ -51,7 +52,6 @@ class Recipe(connector.Manager.Base):
             'description': self.description
         }
 
-"""
 
 recipe_data_dir = path.join(BaseDirectory.xdg_data_home, "web")
 
@@ -60,9 +60,9 @@ class Recipe2(connector.Manager.Base):
     __tablename__ = 'recipe2'
     id = Column(Integer, Sequence('recipe2_id_seq'), primary_key=True)
     user_id = Column(Integer, ForeignKey('users.id'))
-    title = Column(String(30))
+    title = Column(String(100))
 
-    md_file = Column(String(500))
+    md_file = Column(String(255))
     json_file = Column(String(255))
 
     def to_json_dict(self):

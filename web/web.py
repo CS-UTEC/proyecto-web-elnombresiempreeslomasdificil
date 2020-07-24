@@ -145,8 +145,6 @@ def create_recipe2():
         c = json.loads(request.form['values'])
     else:
         c = json.loads(request.data)
-    
-    print(session)
 
     recipe = entities.Recipe2(
         user_id=c['user_id'] if 'user_id' in c else session['id'],
