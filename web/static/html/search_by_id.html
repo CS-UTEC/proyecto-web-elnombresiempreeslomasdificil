@@ -10,15 +10,19 @@
 		</script>
 		<script src="/static/js/search.js" charset="utf-8">
 		</script>
+		<script src="/static/js/logout.js" charset="utf-8">
+		</script>
 		<title>Search recipe</title>
 		<style type="text/css" media="screen">
 		</style>
 	</head>
 	<body onload = get_current()>
-		<input type="text" value="" name="" id="search"/>
-		<button onclick="search()">Search</button>
-
-
+		<div class = "center">
+			<input type="text" value="" name="" id="search"/>
+			<button onclick="search()">Search</button>
+			<button onclick = "logout()" type = "button" class = "btn btn-danger">Logout</button>
+            <button onclick = "window.location.href = './create_recipe.html'"> Create a recipe </button>
+		</div>
         <h2> My recipies </h2>
 		<div id="recipe_user"> </div>
 		<h2> Recipies </h2>

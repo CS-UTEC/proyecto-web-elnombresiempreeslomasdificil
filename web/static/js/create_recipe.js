@@ -24,7 +24,9 @@ function create_recipe(){
 		data: JSON.stringify(data),
 		success: function(data)
 		{
-            console.log(data.msg)
+			console.log(data.msg)
+			window.location.href = "./search_by_id.html";
+			
 		},
 		error: function(data)
 		{
