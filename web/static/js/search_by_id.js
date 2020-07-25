@@ -39,6 +39,7 @@ function get_current(){
 		//var div = "<div>@<span>username</span></div>";
 	    //div = div.replace("username" , data['username']);
 		search_id(data['id']);
+		all_recipes();
     });
 }
 

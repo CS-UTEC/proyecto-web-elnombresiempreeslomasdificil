@@ -41,3 +41,32 @@ function search() {
 		}
 	});
 }
+
+
+function all_recipes() {
+
+	$.get({
+		url: '/recipes2',
+		type: 'get',
+		dataType: 'json',
+		contentType: 'application/json',
+		success: function(data)
+		{
+			console.log(data)
+
+			for(i in  data){
+				var title = data[i].title
+				var id = data[i].id
+
+				console.log(title)
+				console.log(id)
+
+				$("#recipes").append(makeLink(title, id), "<br>")
+			}
+		},
+		error: function(data)
+		{
+			console.error("Error")
+		}
+	});
+}

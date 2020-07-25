@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width">
 		<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 		<script src="/static/libs/jquery-3.3.1.js" charset="utf-8">
 		</script>
 		<script src="/static/js/search_by_id.js" charset="utf-8">
@@ -19,9 +20,11 @@
 	<body onload = get_current()>
 		<div class = "center">
 			<input type="text" value="" name="" id="search"/>
-			<button onclick="search()">Search</button>
-			<button onclick = "logout()" type = "button" class = "btn btn-danger">Logout</button>
-            <button onclick = "window.location.href = './create_recipe.html'"> Create a recipe </button>
+			<div class="btn-group" role="group" aria-label="group of buttons">		
+				<button type="button" class="btn btn-primary" onclick="search()">Search</button>
+				<button type="button" class="btn btn-danger" onclick = "logout()">Logout</button>
+				<button type="button" class="btn btn-primary" onclick = "window.location.href = './create_recipe.html'"> Create a recipe </button>
+			</div>
 		</div>
         <h2> My recipies </h2>
 		<div id="recipe_user"> </div>
