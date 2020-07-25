@@ -205,6 +205,17 @@ def get_recipes2():
     return Response(response, mimetype='application/json')
 
 
+@app.route('/recipes2/<id>', methods=['DELETE'])
+def delete_recipe2(id):
+    _session = db.getSession(engine)
+    user = _session.query(entities.Recipe2).filter(entities.Recipe2.id == id).one()
+    _session.delete(user)
+    _session.commit()
+    _session.close()
+
+    message = {'message': 'Ok'}
+    return Response(json.dumps(message), mimetype='application/json')
+
 @app.route('/recipes2/<id>', methods=['GET'])
 def get_recipe2(id):
     db_session = db.getSession(engine)
