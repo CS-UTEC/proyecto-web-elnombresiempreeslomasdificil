@@ -2,10 +2,12 @@
 <head>
     <title>IChef</title>
     <link href="../libs/jquery-3.3.1.js"/>
-    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
     <style> 
         h1 { 
-            color:#009909;
+            color:#FF9A06;
             font-size:30px; 
         } 
         p { 
@@ -16,22 +18,28 @@
         img{
             text-align: center;
         }
+        body{
+            background-image: url(https://wallpaperaccess.com/full/271679.jpg);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
         
-        </style> 
+    </style> 
 </head>
 <body>
     <nav>
         <center>
-            <img  src= "https://png.pngtree.com/element_our/png_detail/20180912/hat-chef--logo-and-symbols-vector-template-png_91617.jpg" width = "150" height = "150"><img>
-            <h1><a class="logo-text">IChef </a></h1>
+            <img  src= "../images/web_hi_res_512.png" width = "150" height = "150"><img>
+            <h1>IChef </h1>
             <br></br>
-            <button onclick = "window.location.href = './login.html'"> login </button>
-            <br></br>
-            <br></br>
-            <button onclick = "window.location.href = './register.html'"> Register </button>
-            <br></br>
-            <br></br>
-            <button onclick = "window.location.href = '../../search.html'"> Search Recipe </button>
+            <button type="button" class="btn btn-primary" onclick = "window.location.href = './login.html'"> login </button>
+            <br>
+            <br>
+            <button type="button" class="btn btn-primary" onclick = "window.location.href = './register.html'"> Register </button>
+            <br>
+            <br>
+            <button type="button" class="btn btn-primary" onclick = "window.location.href = '../../search.html'"> Search Recipe </button>
         </center>
     </nav>
 </body>

@@ -3,10 +3,13 @@
 
 	<head>
 		<meta charset = "UTF-8">
-		<title>Register user</title>
+		<title>login web</title>
 		<script src = "/static/js/register.js"></script> 
 		<script src = "/static/js/libs/bootstrap.js"> </script>
 		<script src = "/static/libs/jquery-3.3.1.js"> </script>
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<style> 
 	h1 { 
 		color:#009909;
@@ -15,28 +18,59 @@
 	img{
 		text-align: center;
 	}
+	body {
+	margin: 0;
+	padding: 0;
+	background-color: #AF630B;
+	height: 100vh;
+	}
+	#login .container #login-row #login-column #login-box {
+	margin-top: 120px;
+	max-width: 600px;
+	height: 320px;
+	border: 1px solid #9C9C9C;
+	background-color: #EAEAEA;
+	}
+	#login .container #login-row #login-column #login-box #login-form {
+	padding: 20px;
+	}
+	#login .container #login-row #login-column #login-box #login-form #register-link {
+	margin-top: -85px;
+	}
 
 	</style> 
 	</head> 
 	<center>
-		<img src= "https://png.pngtree.com/element_our/png_detail/20180912/hat-chef--logo-and-symbols-vector-template-png_91617.jpg" width = "150" height = "150" ><br>
+		<img src= "https://png.pngtree.com/element_our/png_detail/20180912/hat-chef--logo-and-symbols-vector-template-png_91617.jpg" width = "150" height = "150" >
+	</body>
+
 	<body>
-		<table>
-		<tr>
-			<td>Username</td>
-			<td><input type = "text" name = "username" id= "username"></td>
-		</tr>
-
-		<tr>
-			<td>Password</td>
-			<td><input type = "password" name = "password" id= "password"></td>
-		</tr>
-
-		<tr>
-			<td colspan = "2"> 
-			<button onclick = "create_user()" type = "button" class = "btn btn-primary">Register</button></td>
-		</tr>
-		</table>
+		<div id="login">
+			<div class="container">
+				<div id="login-row" class="row justify-content-center align-items-center">
+					<div id="login-column" class="col-md-6">
+						<div id="login-box" class="col-md-12">
+								<h3 class="text-center text-info">Register</h3>
+								<div class="form-group">
+									<label for="username" class="text-info">Username:</label><br>
+									<input type="text" name="username" id="username" class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="password" class="text-info">Password:</label><br>
+									<input type="text" name="password" id="password" class="form-control">
+								</div>
+								<div class="form-group">
+									<input type="submit" name="submit" class="btn btn-info btn-md" value="submit" onclick= create_user()>
+								</div>
+								<br>
+								<div id="register-link" class="text-right">
+									<a href="register.html" class="text-info">Register here</a>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 
 </html>   
